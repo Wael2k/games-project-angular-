@@ -1,0 +1,33 @@
+<form [formGroup]="gameForm" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" style="display: flex; gap: 20px;" [ngStyle]="{ 'flex-direction': isCreateOrUpdate === 'create' ? 'row' : 'column' }">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Game Name</mat-label>
+    <input matInput formControlName="nomGame" placeholder="Game Name">
+    <mat-error *ngIf="gameForm.controls['nomGame'].invalid && gameForm.controls['nomGame'].touched">
+      Game Name could not be empty!
+    </mat-error>
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description" placeholder="Description"> 
+    <mat-error *ngIf="gameForm.controls['description'].invalid && gameForm.controls['description'].touched">
+      Game Description could not be empty!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Score</mat-label>
+    <input matInput formControlName="score" placeholder="Score" type="number"> 
+    <mat-error *ngIf="gameForm.controls['score'].invalid && gameForm.controls['score'].touched">
+      Score could not be empty!
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-select   placeholder="Toppings" formControlName="joueurs" [(value)]="selectedPlayers" multiple>
+      <mat-option *ngFor="let player of players" [value]="player.id">{{player.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+ 
+  <button mat-raised-button type="submit" style="height: 50px; margin-top: 5px;" >{{action}}</button>
+</form>

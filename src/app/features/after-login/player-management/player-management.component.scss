@@ -1,0 +1,15 @@
+.playerForm {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+th.mat-header-cell {
+    text-align: center !important;
+  }
+mat-icon + mat-icon {
+    margin-left: 15px;
+}
+mat-icon{
+    cursor: pointer;
+}

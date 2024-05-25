@@ -1,0 +1,25 @@
+<app-create-or-update-player (isSubmitted)="receiveAction($event)" [isCreateOrUpdate]="'create'" class="playerForm"></app-create-or-update-player>
+<div style="display: flex; flex-direction: column; margin-left: 30%;margin-right: 30%;" >
+    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>{{ rerenderColumnName(column) }}</th>
+            <td class="text-center" mat-cell *matCellDef="let data">{{ data[column] }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Action</th>
+            <td class="text-center" mat-cell *matCellDef="let data">
+                <mat-icon (click)="openEditDialog(data.id)">edit</mat-icon>
+                <mat-icon (click)="deletePlayer(data.id)">delete</mat-icon>
+            </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsForAction"></tr>
+        <tr mat-row *matRowDef="let emprow; columns: displayedColumnsForAction"></tr>
+    </table>
+    <div *ngIf="players.length == 0" class="text-center" style="margin-top: 15px">
+        There's no available accounts <hr>
+    </div>
+    <br>
+    <mat-paginator #paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

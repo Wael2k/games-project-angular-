@@ -1,0 +1,29 @@
+<form [formGroup]="playerForm" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" style="display: flex; gap: 20px;"
+  [ngStyle]="{ 'flex-direction': isCreateOrUpdate === 'create' ? 'row' : 'column' }">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Player Name</mat-label>
+    <input matInput formControlName="name" placeholder="Player Name">
+    <mat-error *ngIf="playerForm.controls['name'].invalid && playerForm.controls['name'].touched">
+      Name of player could not be empty!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Player Age</mat-label>
+    <input matInput formControlName="age" type="number" placeholder="Player Age">
+    <mat-error *ngIf="playerForm.controls['age'].invalid && playerForm.controls['age'].touched">
+      Age of player could not be empty!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Player Position</mat-label>
+    <input matInput formControlName="position" placeholder="Player Position">
+    <mat-error *ngIf="playerForm.controls['position'].invalid && playerForm.controls['position'].touched">
+      Position of player could not be empty!
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button type="submit" style="height: 50px; margin-top: 5px;">{{action}}</button>
+</form>

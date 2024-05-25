@@ -1,0 +1,12 @@
+<!-- Sample HTML for demo starts  -->
+
+
+<!-- Sample HTML for demo ends  -->
+
+<ngx-loading-bar [includeSpinner]="false" color="blue"></ngx-loading-bar>
+<mat-toolbar>
+  <span>Welcome to my app</span>
+  <button *ngIf="isGamePage" mat-raised-button style="height: 50px;  margin-left: 35px;" routerLink="/after-login/player" >Undo Player</button>
+  <button *ngIf="isPlayerPage" mat-raised-button style="height: 50px;  margin-left: 35px;" routerLink="/after-login/game" >Undo Game</button>
+</mat-toolbar>
+<router-outlet></router-outlet>
